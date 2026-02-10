@@ -6,12 +6,12 @@
 // I have no idea what I'm doing.
 
 const images = [
-    'res/background0.webp',
-    'res/background1.webp',
-    'res/background2.webp',
-    'res/background3.webp',
-    'res/background4.webp',
-    'res/background5.webp'
+    'res/bg/0.webp',
+    'res/bg/1.webp',
+    'res/bg/2.webp',
+    'res/bg/3.webp',
+    'res/bg/4.webp',
+    'res/bg/5.webp'
 ];
 
 let currentIndex = 0;
