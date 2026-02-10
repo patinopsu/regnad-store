@@ -51,16 +51,16 @@ setInterval(changeBackground, 5000);
 // SPA Application Navigation with Fade Effect
 async function navigateTo(path, addHistory = true) {
     const container = document.querySelector('.content');
-    
-    // 1. Clean the path for CSS (Replace "/" with "-" for the data-attribute)
-    // Example: "blog/post-1" becomes "blog-post-1"
-    const pageKey = path.replace(/\//g, '-');
-    document.body.setAttribute('data-page', pageKey);
 
     container.classList.add('hidden');
 
     setTimeout(async () => {
         try {
+            // 1. Clean the path for CSS (Replace "/" with "-" for the data-attribute)
+            // Example: "blog/post-1" becomes "blog-post-1"
+            const pageKey = path.replace(/\//g, '-');
+            document.body.setAttribute('data-page', pageKey);
+
             // 2. Fetch from the sub-folder
             const response = await fetch(`pages/${path}.html`);
             
