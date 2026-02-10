@@ -41,16 +41,24 @@ body {
 .container .nav {
     display: flex;
     align-items: center;
+    transition: opacity 0.3s ease-in-out;
     padding: 4px;
 }
+
+.container .nav.hidden {
+    opacity: 0;
+}
+
 .container .nav .left {
     display: flex;
     align-items: center;
 }
+
 .container .nav .left img {
   width: 150px;
   filter: grayscale(1);
 }
+
 .container .nav .left h1 {
     font-size: 2.5rem;
     line-height: 1.1;

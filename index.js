@@ -105,7 +105,7 @@ async function setLanguage(lang) {
     try {
         const response = await fetch(`./i18n/${lang}.json`);
         const translations = await response.json();
-
+        
         // Find all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
@@ -118,12 +118,21 @@ async function setLanguage(lang) {
         localStorage.setItem('preferredLang', lang);
         currentLang = lang;
     } catch (error) {
-        container.innerHTML = "<p>Could not load language file</p>";
+        content.innerHTML = "<p>Could not load language file</p>";
         console.error("Could not load language file:", error);
     }
 }
 
 langToggle.addEventListener('click', () => {
+    const content = document.querySelector('.content');
+    const nav = document.querySelector('.nav');
     const nextLang = currentLang === 'en' ? 'th' : 'en';
-    setLanguage(nextLang);
+
+    content.classList.add('hidden');
+    nav.classList.add('hidden');
+    setTimeout(() => {
+        setLanguage(nextLang);
+        nav.classList.remove('hidden');
+        content.classList.remove('hidden');
+    }, 1000)
 });
