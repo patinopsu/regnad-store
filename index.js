@@ -68,6 +68,7 @@ async function navigateTo(path, addHistory = true) {
             const html = await response.text();
 
             container.innerHTML = html;
+            await setLanguage(currentLang);
 
             if (addHistory) {
                 window.history.pushState({ path }, '', `#${path}`);
@@ -93,4 +94,35 @@ window.addEventListener('popstate', (event) => {
     if (event.state && event.state.page) {
         navigateTo(event.state.page, false);
     }
+});
+
+// i18n Support
+const langToggle = document.getElementById('lang-toggle');
+let currentLang = localStorage.getItem('preferredLang') || 'en';
+let cachedTranslations = null;
+
+async function setLanguage(lang) {
+    try {
+        const response = await fetch(`./i18n/${lang}.json`);
+        const translations = await response.json();
+
+        // Find all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key]) {
+                element.textContent = translations[key];
+            }
+        });
+
+        document.documentElement.lang = lang;
+        localStorage.setItem('preferredLang', lang);
+        currentLang = lang;
+    } catch (error) {
+        console.error("Could not load language file:", error);
+    }
+}
+
+langToggle.addEventListener('click', () => {
+    const nextLang = currentLang === 'en' ? 'th' : 'en';
+    setLanguage(nextLang);
 });
