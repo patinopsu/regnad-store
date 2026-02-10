@@ -1,11 +1,16 @@
 {
   "button": "🇺🇸",
+  "spanstore": "Store",
+  "home": "Home",
+  "software": "Software",
+  "about": "About",
+ 
   "welcome_title": "Welcome, Traveler",
   "description": "Here Comes Deep Root Disease",
-  "spanstore": "Store",
-  "about": "About",
 
   "lethalomen_title": "Lethal Omen",
-  "lethalomen_description": "A STUNNING NEW FIRST-PERSON-SHOOTER FROM GEMINI HOME ENTERTAINMENT & ALPINE ARTS"
-   
+  "lethalomen_description": "A STUNNING NEW FIRST-PERSON-SHOOTER FROM GEMINI HOME ENTERTAINMENT & ALPINE ARTS",
+
+  "about_title": "About",
+  "about_description": "This website was heavily inspired by Gemini Home Entertainemtent, A Series of Analog Horror by Remy Abode. The store is not a Gemini Home Entertainemtent-only store, since there are only a few things that are products in Gemini Home Entertainemtent"
 }
