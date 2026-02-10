@@ -80,10 +80,6 @@ body {
 }
 
 .container .content {
-    font-size: 2rem;
-    line-height: 0.9;
-    margin-top: 20px;
-    text-align: center;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
 }
