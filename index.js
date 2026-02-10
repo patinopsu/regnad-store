@@ -118,6 +118,7 @@ async function setLanguage(lang) {
         localStorage.setItem('preferredLang', lang);
         currentLang = lang;
     } catch (error) {
+        container.innerHTML = "<p>Could not load language file</p>";
         console.error("Could not load language file:", error);
     }
 }
