@@ -49,31 +49,30 @@ setInterval(changeBackground, 5150);
 
 
 // SPA Application Navigation with Fade Effect
-// 1. Handle the page change logic
-async function navigateTo(page, addHistory = true) {
+async function navigateTo(path, addHistory = true) {
     const container = document.querySelector('.content');
-
-    // Update data-page attribute for CSS styling
-    document.body.setAttribute('data-page', page);
     
-    // Start Fade Out
+    // 1. Clean the path for CSS (Replace "/" with "-" for the data-attribute)
+    // Example: "blog/post-1" becomes "blog-post-1"
+    const pageKey = path.replace(/\//g, '-');
+    document.body.setAttribute('data-page', pageKey);
+
     container.classList.add('hidden');
 
     setTimeout(async () => {
         try {
-            const response = await fetch(`pages/${page}.html`);
+            // 2. Fetch from the sub-folder
+            const response = await fetch(`pages/${path}.html`);
+            
             if (!response.ok) throw new Error('Page not found');
             const html = await response.text();
 
-            // Update content
             container.innerHTML = html;
 
-            // 2. Update the URL without reloading
             if (addHistory) {
-                window.history.pushState({ page }, '', `#${page}`);
+                window.history.pushState({ path }, '', `#${path}`);
             }
 
-            // Fade In
             container.classList.remove('hidden');
         } catch (error) {
             container.innerHTML = "<h2>404</h2><p>Page not found.</p>";
