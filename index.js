@@ -134,5 +134,5 @@ langToggle.addEventListener('click', () => {
         setLanguage(nextLang);
         nav.classList.remove('hidden');
         content.classList.remove('hidden');
-    }, 1000)
+    }, 400)
 });
