@@ -35,7 +35,7 @@ body {
 
 .container {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     color: white;
 }
 .container .nav {
@@ -88,7 +88,9 @@ body {
 }
 
 .container .content {
+    flex: 1;
     opacity: 1;
+    flex: 1 0 auto;
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -99,4 +101,13 @@ body {
 
 .container .content.hidden {
     opacity: 0;
+}
+
+.container .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 10px;
+    text-align: center;
 }

@@ -3,7 +3,8 @@
   "spanstore": "ร้านค้า",
   "home": "หน้าเเรก",
   "software": "ซอฟต์เเวร์",
-  "about": "เกี่ยวกับ",
+  "gaming": "เกม",
+  "about": "เกี่ยวกับฉัน",
 
   "welcome_title": "ยินดีต้อนรับ, นักท่องเที่ยว",
   "description": "เดะผมเอาโรครากลึกไปฝาก",
@@ -15,5 +16,10 @@
   "lethalomen_description": "สุดยอดเกมยิงมุมมองบุคคลที่หนึ่งใหม่ล่าสุดจากภาพยนตร์ GEMINI HOME ENTERTAINMENT เเละค่ายเกม ALPINE ARTS",
 
   "doom_title": "DOOM",
-  "doom_description": "PLACEHOLDER"
+  "doom_description": "Doom คือเกมยิงมุมมองบุคคลที่หนึ่งในปี 1993 ที่พัฒนาโดย id Software สำหรับระบบปฏิบัติการ MS-DOS ผู้เล่นจะได้รับบทเป็นสเปสมารีน หรือที่รู้จักกันในชื่อ Doomguy ที่ต้องต่อสู้ฝ่าฟันเหล่าฝูงปีศาจที่บุกรุกมาจากนรก",
+
+  "mfs1_title": "Microsoft Flight Simulator",
+  "mfs1_shorten": "MFS",
+  "mfs1_description": "Microsoft Flight Simulator เป็นวิดีโอเกมจำลองการบินปี 1982 ซึ่งวางจำหน่ายในเดือนพฤศจิกายน 1982 สำหรับเครื่อง IBM PC โดยเป็นเกมภาคแรกในซีรีส์ Microsoft Flight Simulator"
+
 }

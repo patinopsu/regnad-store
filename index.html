@@ -8,6 +8,7 @@
     <title>Regnad Computing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/3216b3a10f.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -24,14 +25,18 @@
             <div class="right">
                 <ul>
                     <li><a href="#" onclick="navigateTo('home')" data-i18n="home"></a></li>
-                    <li><a href="#" onclick="navigateTo('offering')" data-i18n="software"></a></li>
+                    <li><a href="#" onclick="navigateTo('software')" data-i18n="software"></a></li>
+                    <li><a href="#" onclick="navigateTo('gaming')" data-i18n="gaming"></a></li>
                     <li><a href="#" onclick="navigateTo('about')" data-i18n="about"></a></li>
-                    <li><a href="#" id="lang-toggle" data-i18n="button"></a></li>
+                    <li><a href="#" id="lang-toggle"><i class="fa-solid fa-globe"></i></a></li>
                 </ul>
             </div>
         </div>
-        <div class="content" id="content">
-        </div>
+        <div class="content" id="content"></div>
+        <footer class="footer">
+            <p>&copy; นายภฑิล เมืองจันทร์</p>
+            <p>Inspired by Gemini Home Entertainment</p>
+        </footer>
     </div>
 </body>
 </html>

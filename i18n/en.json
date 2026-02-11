@@ -3,7 +3,8 @@
   "spanstore": "Store",
   "home": "Home",
   "software": "Software",
-  "about": "About",
+  "gaming": "Gaming",
+  "about": "About Me",
  
   "welcome_title": "Welcome, Traveler",
   "description": "Here Comes Deep Root Disease",
@@ -15,5 +16,9 @@
   "lethalomen_description": "A STUNNING NEW FIRST-PERSON-SHOOTER FROM GEMINI HOME ENTERTAINMENT & ALPINE ARTS",
 
   "doom_title": "DOOM",
-  "doom_description": "PLACEHOLDER"
+  "doom_description": "Doom is a 1993 first-person shooter game developed by id Software for MS-DOS. Players assume the role of a space marine, popularly known as Doomguy, fighting his way through hordes of invading demons from Hell",
+
+  "mfs1_title": "Microsoft Flight Simulator",
+  "mfs1_shorten": "MFS",
+  "mfs1_description": "Microsoft Flight Simulator is a 1982 flight simulation video game, released in November 1982 for the IBM PC. It is the first installment in the Microsoft Flight Simulator series."
 }
