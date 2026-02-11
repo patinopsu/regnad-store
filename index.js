@@ -44,8 +44,8 @@ function changeBackground() {
     }, 1500); 
 }
 
-// Change image every 5 seconds
-setInterval(changeBackground, 5000);
+// Change image every 5.15 seconds
+setInterval(changeBackground, 5150);
 
 
 // SPA Application Navigation with Fade Effect
