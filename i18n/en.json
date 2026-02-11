@@ -24,5 +24,8 @@
 
   "mfs1_title": "Microsoft Flight Simulator",
   "mfs1_shorten": "MFS",
-  "mfs1_description": "Microsoft Flight Simulator is a 1982 flight simulation video game, released in November 1982 for the IBM PC. It is the first installment in the Microsoft Flight Simulator series."
+  "mfs1_description": "Microsoft Flight Simulator is a 1982 flight simulation video game, released in November 1982 for the IBM PC. It is the first installment in the Microsoft Flight Simulator series.",
+
+  "win95_title": "Windows 95",
+  "win95_description": "Windows 95 is a consumer-oriented operating system developed by Microsoft, released to manufacturing on July 14, 1995, and to retail on August 24, 1995. The first of the Windows 9x line of operating systems, Windows 95, which replaced Windows 3.1"
 }
