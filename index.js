@@ -56,19 +56,25 @@ async function navigateTo(path, addHistory = true) {
 
     setTimeout(async () => {
         try {
+if (!path) return; // Stop if path is empty
+    console.log("Navigating to:", path); // Debugging: check your console (F12) 
             // 1. Clean the path for CSS (Replace "/" with "-" for the data-attribute)
             // Example: "blog/post-1" becomes "blog-post-1"
             const pageKey = path.replace(/\//g, '-');
             document.body.setAttribute('data-page', pageKey);
-
+            
             // 2. Fetch from the sub-folder
-            const response = await fetch(`pages/${path}.html`);
+            const response = await fetch(`./pages/${path}.html`);
             
             if (!response.ok) throw new Error('Page not found');
             const html = await response.text();
-
+            
             container.innerHTML = html;
             await setLanguage(currentLang);
+            
+            // 3. Set Web Page Title
+            const formattedName = path.split('/').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' | ');
+            document.title = `Regnad Computing | ${formattedName}`;
 
             if (addHistory) {
                 window.history.pushState({ path }, '', `#${path}`);
@@ -91,8 +97,32 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // 4. Handle the Browser Back/Forward buttons
 window.addEventListener('popstate', (event) => {
-    if (event.state && event.state.page) {
-        navigateTo(event.state.page, false);
+    // 1. Check if we have state data saved from pushState
+    if (event.state && event.state.path) {
+        // 2. Call your function, but set 'addHistory' to false
+        // so we don't create an infinite loop of history entries!
+        navigateTo(event.state.path, false);
+    } else {
+        // 3. Fallback: If no state (like returning to the very start), 
+        // try to load the page from the URL hash or default to 'home'
+        const path = window.location.hash.replace('#', '') || 'home';
+        navigateTo(path, false);
+    }
+});
+
+
+// DON'T USE HREF in <a> TAG
+document.getElementById('nav').addEventListener('click', (e) => {
+    const link = e.target.closest('a'); // Works even if you have an icon inside the link
+    if (link) {
+        e.preventDefault(); // STOP the browser from refreshing
+        
+        // Get the path from the href (removing the '#' part)
+        const path = link.getAttribute('href').replace('#', '');
+        
+        if (path) {
+            navigateTo(path);
+        }
     }
 });
 
