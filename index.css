@@ -77,7 +77,7 @@ body {
 .container .nav .right ul {
     display: flex;
     list-style-type: none;   
-    gap: 30px;
+    gap: 15px;
     text-align: left;
 }
 .container .nav .right ul li a {
