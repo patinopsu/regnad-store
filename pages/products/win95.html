@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="product">
+        <img src="res/banner/win95.webp" alt="Lethal Omen Game Cover">
+        <div class="product-details">
+            <h1 data-i18n="win95_title"></h1>
+            <p data-i18n="win95_description"></p>
+            <a href="https://alpine-arts.itch.io/lethal-omen" target="_blank" rel="noopener noreferrer"><img src="res/banner/itchiodownlink.webp"></a>
+        </div>
+    </div>
+</body>
+<style>
+    [data-page="products-win95"] .product {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 50px;
+    }
+    [data-page="products-win95"] .product img {
+        width: 280px;
+        border-radius: 20px;
+    }
+    [data-page="products-win95"] .product-details {
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+        max-width: 500px;
+        margin-top: 50px;
+    }
+    [data-page="products-win95"] .product h1 {
+        font-size: 50px;
+        line-height: 0.9;
+        margin: 0;
+    }
+    [data-page="products-win95"] .product p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+</style>
+</html>
