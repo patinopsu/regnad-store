@@ -166,3 +166,5 @@ langToggle.addEventListener('click', () => {
         content.classList.remove('hidden');
     }, 400)
 });
+
+// Cart System
