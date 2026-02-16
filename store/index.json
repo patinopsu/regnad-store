@@ -6,5 +6,9 @@
   "mfs1": {
     "fullPrice": 993,
     "discount": 56 
+  },
+  "win95": {
+    "fullPrice": 3387,
+    "discount": 10 
   }
 }
