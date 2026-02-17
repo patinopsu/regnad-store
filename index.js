@@ -6,12 +6,7 @@
 // I have no idea what I'm doing.
 
 const images = [
-    'res/bg/0.webp',
-    'res/bg/1.webp',
-    'res/bg/2.webp',
-    'res/bg/3.webp',
-    'res/bg/4.webp',
-    'res/bg/5.webp'
+    '0', '1', '2'
 ];
 
 let currentIndex = 0;
@@ -19,7 +14,7 @@ const currentLayer = document.querySelector('.current');
 const nextLayer = document.querySelector('.next');
 
 // Set initial image
-currentLayer.style.backgroundImage = `url('${images[currentIndex]}')`;
+currentLayer.style.backgroundImage = `url('res/bg/${images[currentIndex]}.webp')`;
 
 function changeBackground() {
     let randomIndex;
@@ -32,20 +27,20 @@ function changeBackground() {
     currentIndex = randomIndex;
     
     // Set the "next" layer to the random image
-    nextLayer.style.backgroundImage = `url('${images[currentIndex]}')`;
+    nextLayer.style.backgroundImage = `url('res/bg/${images[currentIndex]}.webp')`;
     
     // Fade the next layer in
     nextLayer.style.opacity = 1;
 
     // Wait for the CSS transition (1.5s) to finish, then swap
     setTimeout(() => {
-        currentLayer.style.backgroundImage = `url('${images[currentIndex]}')`;
+        currentLayer.style.backgroundImage = `url('res/bg/${images[currentIndex]}.webp')`;
         nextLayer.style.opacity = 0;
     }, 1500); 
 }
 
 // Change image every 5.15 seconds
-setInterval(changeBackground, 5150);
+setInterval(changeBackground, 6000);
 
 
 // SPA Application Navigation with Fade Effect
