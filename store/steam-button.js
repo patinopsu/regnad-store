@@ -1,15 +1,16 @@
 import { Basket } from './basket.js';
 
+// Global cache so we don't re-fetch on every button
 let steamProductData = null;
 let steamTemplateHtml = null;
 let i18nData = { en: {}, th: {} };
 
 async function initializeComponent() {
-    if (!steamProductData || !steamTemplateHtml) {
-        // Fetch everything: Data, Template, and your i18n files
+    if (!steamProductData) {
+        console.log('Initializing Steam Component Data...'); // Check if this fires
         const [dataRes, tempRes, enRes, thRes] = await Promise.all([
             fetch('/store/products.json'),
-            fetch('/store/button.html'),
+            fetch('/store/steam-button.html'),
             fetch('/i18n/en.json'),
             fetch('/i18n/th.json')
         ]);
@@ -27,29 +28,31 @@ class SteamPriceButton extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
+    // This is the "Magic" for SPAs. 
+    // It runs every time the tag enters the DOM, even after navigation.
     async connectedCallback() {
+        console.log('Button detected in DOM!'); 
         await initializeComponent();
-        
+        this.render();
+    }
+
+    render() {
         const productId = this.getAttribute('product-id');
         const product = steamProductData[productId];
         if (!product) return;
 
-        // Get language preference
         const lang = localStorage.getItem('preferredLang') || 'en';
-        const title = i18nData[lang][`${productId}_title`] || productId;
-
+        
         const parser = new DOMParser();
         const doc = parser.parseFromString(steamTemplateHtml, 'text/html');
         const styleTag = doc.querySelector('style').cloneNode(true);
         const wrapper = doc.querySelector('.wrapper').cloneNode(true);
 
-        // Price Calculations
         const finalPrice = product.fullPrice * (1 - (product.discount / 100));
         const formatter = new Intl.NumberFormat(lang === 'th' ? 'th-TH' : 'en-US', {
             style: 'currency', currency: 'THB'
         });
 
-        // Inject Content
         const discEl = wrapper.querySelector('#discount-tag');
         const oldEl = wrapper.querySelector('#price-old');
         
@@ -63,10 +66,9 @@ class SteamPriceButton extends HTMLElement {
 
         wrapper.querySelector('#price-now').textContent = formatter.format(finalPrice);
 
-        // Button Action
         wrapper.querySelector('#add-btn').onclick = () => {
             Basket.addItem(productId);
-            console.log(`Added ${title} to basket!`);
+            // Optional: Trigger a UI feedback here
         };
 
         this.shadowRoot.innerHTML = '';
@@ -75,4 +77,7 @@ class SteamPriceButton extends HTMLElement {
     }
 }
 
-customElements.define('price-button', SteamPriceButton);
+// Define it globally once
+if (!customElements.get('price-button')) {
+    customElements.define('price-button', SteamPriceButton);
+}
