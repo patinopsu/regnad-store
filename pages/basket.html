@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Basket</title>
-</head>
-<body>
-    <h1>Basket</h1>
-    
-</body>
-<style>
-    [data-page="basket"] .content {
-        display: flex;
-        justify-content: center;
-        margin-top: 100px;
+<div id="cart-counter">Cart: 0 items</div>
+
+<script>
+    function updateHeaderCount() {
+        const cart = JSON.parse(localStorage.getItem('steam_cart') || '[]');
+        document.getElementById('cart-counter').textContent = `Cart: ${cart.length} items`;
     }
-</style>
-</html> 
+
+    // Listen for the custom event we created in basket.js
+    window.addEventListener('basket-updated', () => {
+        updateHeaderCount();
+    });
+
+    // Initial load
+    updateHeaderCount();
+</script>

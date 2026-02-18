@@ -45,14 +45,22 @@ setInterval(changeBackground, 6000);
 
 // SPA Application Navigation with Fade Effect
 async function navigateTo(path, addHistory = true) {
-    const container = document.querySelector('.content');
+    const container = document.querySelector('.container');
+    const content = document.querySelector('.content');
+    const osd = document.getElementById('osd-text');
 
-    container.classList.add('hidden');
+    // Scary Element
+    const glitchInterval = setInterval(onchangeglitch, 50);
+    container.classList.add('vcr-tear');
+    if (osd) osd.innerText = "SEEKING..."; 
+    onchangeglitch();
+
+    content.classList.add('hidden');
 
     setTimeout(async () => {
         try {
-if (!path) return; // Stop if path is empty
-    console.log("Navigating to:", path); // Debugging: check your console (F12) 
+            if (!path) return; // Stop if path is empty
+            console.log("Navigating to:", path); // Debugging: check your console (F12) 
             // 1. Clean the path for CSS (Replace "/" with "-" for the data-attribute)
             // Example: "blog/post-1" becomes "blog-post-1"
             const pageKey = path.replace(/\//g, '-');
@@ -64,21 +72,69 @@ if (!path) return; // Stop if path is empty
             if (!response.ok) throw new Error('Page not found');
             const html = await response.text();
             
-            container.innerHTML = html;
+            content.innerHTML = html;
             await setLanguage(currentLang);
+
+            const scripts = content.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                
+                // Copy attributes (like src, type, etc.)
+                Array.from(oldScript.attributes).forEach(attr => {
+                    newScript.setAttribute(attr.name, attr.value);
+                });
+
+                // Copy inline code
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                
+                // Append to body to execute, then immediately remove to keep DOM clean
+                document.body.appendChild(newScript);
+                oldScript.parentNode.removeChild(oldScript);
+            });
             
             // 3. Set Web Page Title
             const formattedName = path.split('/').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' | ');
-            document.title = `Regnad Computing | ${formattedName}`;
-
+            document.title = `Regnad Computing | ${formattedName}`; 
             if (addHistory) {
                 window.history.pushState({ path }, '', `#${path}`);
-            }
+            }   
+            content.classList.remove('hidden');
+
+            clearInterval(glitchInterval);
+            container.classList.remove('vcr-tear');
+            if (osd) osd.innerText = "PLAY ▶";
+        } catch (error) {
+        console.error("System Malfunction:", error);
+            const osd = document.getElementById('osd-text');
+
+            let seconds = 5;
+            
+            // Initial warning
+            if (osd) osd.innerText = `CRITICAL ERROR: SELF DESTRUCT IN ${seconds}s`;
+            
+            const countdown = setInterval(() => {
+                seconds--;
+                if (osd) osd.innerText = `CRITICAL ERROR: SELF DESTRUCT IN ${seconds}s`;
+                
+                // Trigger a violent glitch on every tick
+                onchangeglitch();
+
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    clearInterval(glitchInterval);
+                    container.classList.remove('vcr-tear');
+                    selfDestruct();
+                }
+            }, 1000);
 
             container.classList.remove('hidden');
-        } catch (error) {
-            container.innerHTML = "<h2>404</h2><p>Page not found.</p>";
-            container.classList.remove('hidden');
+            //setTimeout(() => {
+            //    console.log('Crashing Browser')
+            //    txt = "a";
+            //    while(1){
+            //        txt = txt += "[Instrumental Intro] [Refrain] So close, no matter how far Couldn't be much more from the heart Forever trusting who we are And nothing else matters [Verse] Never opened myself this way Life is ours, we live it our way All these words, I don't just say And nothing else matters Trust I seek and I find in you Every day for us something new Open mind for a different view And nothing else matters [Chorus] Never cared for what they do Never cared for what they know But I know [Refrain] So close, no matter how far It couldn't be much more from the heart Forever trusting who we are And nothing else matters See Metallica Live Get tickets as low as $240 You might also like What Was I Made For? Billie Eilish The Tortured Poets Department Taylor Swift loml Taylor Swift [Chorus] Never cared for what they do Never cared for what they know But I know [Instrumental Break] [Verse] I never opened myself this way Life is ours, we live it our way All these words, I don't just say And nothing else matters Trust I seek and I find in you Every day for us something new Open mind for a different view And nothing else matters [Chorus] Never cared for what they say Never cared for games they play Never cared for what they do Never cared for what they know And I know, yeah, yeah [Guitar Solo] [Refrain] So close, no matter how far Couldn't be much more from the heart Forever trusting who we are No, nothing else matters [Instrumental Outro]"; 
+            //    }
+            //}, 9000)
         }
     }, 300); 
 }
