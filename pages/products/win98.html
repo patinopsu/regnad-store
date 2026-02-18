@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+    <div class="product">
+        <img src="res/banner/win98.webp">
+        <div class="product-details">
+            <h1 data-i18n="win98_title"></h1>
+            <p data-i18n="win98_description"></p>
+            <price-button product-id="win98"></price-button>
+        </div>
+    </div>
+</body>
+<style>
+    [data-page="products-win98"] .product {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        margin-top: 50px;
+    }
+    [data-page="products-win98"] .product img {
+        width: 280px;
+        border-radius: 20px;
+    }
+    [data-page="products-win98"] .product-details {
+        display: flex;
+        text-align: left;
+        flex-direction: column;
+        max-width: 500px;
+        margin-top: 50px;
+    }
+    [data-page="products-win98"] .product h1 {
+        font-size: 50px;
+        line-height: 0.9;
+        margin: 0;
+    }
+    [data-page="products-win98"] .product p {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+</style>
+</html>
