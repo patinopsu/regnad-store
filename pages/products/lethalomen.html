@@ -42,4 +42,12 @@
         margin-top: 10px;
     }
 </style>
+<script>
+    console.log('Script in lethalomen loaded')
+    const osd = document.getElementById('osd-text');
+    setTimeout(() => {
+        if (osd) osd.innerText = "ANOMALY DETECTED..."; 
+    }, 1000)
+    changetext()
+</script>
 </html>
