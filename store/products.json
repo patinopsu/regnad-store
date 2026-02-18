@@ -8,7 +8,11 @@
     "discount": 56 
   },
   "win95": {
-    "fullPrice": 3387,
+    "fullPrice": 5500 ,
     "discount": 10 
+  },
+  "win98": {
+    "fullPrice": 8360,
+    "discount": 5 
   }
 }
